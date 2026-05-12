@@ -1,0 +1,392 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 2rem;
+  text-align: center;
+}
+
+.app-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.app-header p {
+  opacity: 0.9;
+  font-size: 1.1rem;
+}
+
+.app-main {
+  flex: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  width: 100%;
+}
+
+.progress-indicator {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.progress-indicator::before {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #e0e0e0;
+  z-index: 0;
+}
+
+.step {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.step::before {
+  content: '';
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #e0e0e0;
+  display: block;
+  margin-bottom: 0.5rem;
+  transition: background 0.3s;
+}
+
+.step.active::before {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.step span {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.step.active span {
+  color: #667eea;
+  font-weight: 600;
+}
+
+.content-area {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  min-height: 400px;
+}
+
+/* Upload Zone */
+.upload-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.upload-zone {
+  border: 2px dashed #ccc;
+  border-radius: 12px;
+  padding: 3rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  width: 100%;
+  max-width: 600px;
+}
+
+.upload-zone.drag-active {
+  border-color: #667eea;
+  background: rgba(102, 126, 234, 0.05);
+}
+
+.upload-zone:hover {
+  border-color: #667eea;
+}
+
+.upload-icon {
+  color: #667eea;
+  margin-bottom: 1rem;
+}
+
+.upload-zone h3 {
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.upload-zone p {
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.file-input {
+  display: none;
+}
+
+.error-message {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #dc3545;
+  background: #fff5f5;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+
+/* Section Review */
+.section-review {
+  width: 100%;
+}
+
+.section-review h3 {
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.sections-list {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.section-item {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1rem;
+  transition: box-shadow 0.3s;
+}
+
+.section-item:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.section-header h4 {
+  flex: 1;
+  color: #333;
+}
+
+.confidence {
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.confidence-high {
+  background: #d4edda;
+  color: #155724;
+}
+
+.confidence-medium {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.section-pages {
+  color: #666;
+  font-size: 0.9rem;
+  margin-left: 2.5rem;
+}
+
+.confirm-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 auto;
+  transition: transform 0.2s;
+}
+
+.confirm-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* Generation Status */
+.generation-status,
+.generation-complete {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+  color: #667eea;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.generation-status h3,
+.generation-complete h3 {
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.success-icon {
+  color: #28a745;
+  margin-bottom: 1rem;
+}
+
+.quality-score {
+  width: 100%;
+  max-width: 400px;
+  margin: 1.5rem 0;
+}
+
+.quality-score h4 {
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.score-bar {
+  height: 12px;
+  background: #e0e0e0;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.score-fill {
+  height: 100%;
+  transition: width 0.5s;
+}
+
+.score-fill.high {
+  background: #28a745;
+}
+
+.score-fill.medium {
+  background: #ffc107;
+}
+
+.score-fill.low {
+  background: #dc3545;
+}
+
+.warnings {
+  width: 100%;
+  max-width: 500px;
+  text-align: left;
+  margin: 1.5rem 0;
+}
+
+.warnings h4 {
+  color: #856404;
+  margin-bottom: 0.75rem;
+}
+
+.warnings ul {
+  list-style: none;
+  padding: 0;
+}
+
+.warnings li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  color: #856404;
+  padding: 0.5rem 0;
+}
+
+.download-btn {
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  transition: transform 0.2s;
+}
+
+.download-btn:hover {
+  transform: translateY(-2px);
+}
+
+.reset-btn {
+  background: transparent;
+  color: #666;
+  border: 1px solid #ccc;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  margin-top: 2rem;
+  transition: all 0.2s;
+}
+
+.reset-btn:hover {
+  background: #f5f5f5;
+  border-color: #999;
+}
+
+.app-footer {
+  text-align: center;
+  padding: 1.5rem;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .content-area {
+    background: #1a1a1a;
+    color: #fff;
+  }
+  
+  .section-item {
+    border-color: #333;
+  }
+  
+  .section-header h4,
+  .section-pages {
+    color: #fff;
+  }
+  
+  .step span {
+    color: #aaa;
+  }
+  
+  .step.active span {
+    color: #667eea;
+  }
+  
+  .progress-indicator::before {
+    background: #333;
+  }
+}
